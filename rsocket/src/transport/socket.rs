@@ -216,14 +216,14 @@ impl DuplexSocket {
                 let flag = joiner.get_flag();
                 let first = joiner.first();
                 match &first.body {
-                    frame::Body::RequestResponse(_) => {
+                    Body::RequestResponse(_) => {
                         let pa: Payload = joiner.into();
                         let result = frame::RequestResponse::builder(sid, flag)
                             .set_all(pa.split())
                             .build();
                         Some(result)
                     }
-                    frame::Body::RequestStream(b) => {
+                    Body::RequestStream(b) => {
                         let n = b.get_initial_request_n();
                         let pa: Payload = joiner.into();
                         let result = frame::RequestStream::builder(sid, flag)
@@ -232,14 +232,14 @@ impl DuplexSocket {
                             .build();
                         Some(result)
                     }
-                    frame::Body::RequestFNF(_) => {
+                    Body::RequestFNF(_) => {
                         let pa: Payload = joiner.into();
                         let result = frame::RequestFNF::builder(sid, flag)
                             .set_all(pa.split())
                             .build();
                         Some(result)
                     }
-                    frame::Body::RequestChannel(b) => {
+                    Body::RequestChannel(b) => {
                         let n = b.get_initial_request_n();
                         let pa: Payload = joiner.into();
                         let result = frame::RequestChannel::builder(sid, flag)
@@ -248,7 +248,7 @@ impl DuplexSocket {
                             .build();
                         Some(result)
                     }
-                    frame::Body::Payload(b) => {
+                    Body::Payload(b) => {
                         let pa: Payload = joiner.into();
                         let result = frame::Payload::builder(sid, flag)
                             .set_all(pa.split())
@@ -585,7 +585,6 @@ impl DuplexSocket {
         res: Payload,
         flag: u16,
     ) {
-        // TODO
         match splitter {
             Some(sp) => {
                 let mut cuts: usize = 0;
