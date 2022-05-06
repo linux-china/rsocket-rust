@@ -53,12 +53,6 @@ pub enum RSocketError {
     Other(#[from] anyhow::Error),
 }
 
-impl Display for RSocketError {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{:?}", self)
-    }
-}
-
 impl RSocketError {
     pub(crate) fn must_new_from_code(code: u32, desc: String) -> Self {
         match code {
