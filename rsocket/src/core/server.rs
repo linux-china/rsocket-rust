@@ -120,7 +120,7 @@ where
         runtime::spawn(async move {
             while let Some(frame) = snd_rx.recv().await {
                 if let Err(e) = writer.send(frame).await {
-                    error!("write frame failed: {}", e);
+                    error!("write frame failed: {:?}", e);
                     break;
                 }
             }
@@ -138,7 +138,7 @@ where
                         }
                     }
                     Some(Err(e)) => {
-                        error!("read frame failed: {}", e);
+                        error!("read frame failed: {:?}", e);
                         break;
                     }
                     None => {
