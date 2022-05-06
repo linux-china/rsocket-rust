@@ -120,16 +120,6 @@ impl Setup {
 }
 
 impl Writeable for Setup {
-    fn len(&self) -> usize {
-        let mut n: usize = 12;
-        n += match &self.token {
-            Some(v) => 2 + v.len(),
-            None => 0,
-        };
-        n += 2 + self.mime_metadata.len() + self.mime_data.len();
-        n += utils::calculate_payload_length(self.get_metadata(), self.get_data());
-        n
-    }
 
     fn write_to(&self, bf: &mut BytesMut) {
         self.version.write_to(bf);
@@ -144,6 +134,17 @@ impl Writeable for Setup {
         bf.put_u8(self.mime_data.len() as u8);
         bf.extend_from_slice(&self.mime_data);
         utils::write_payload(bf, self.get_metadata(), self.get_data());
+    }
+
+    fn len(&self) -> usize {
+        let mut n: usize = 12;
+        n += match &self.token {
+            Some(v) => 2 + v.len(),
+            None => 0,
+        };
+        n += 2 + self.mime_metadata.len() + self.mime_data.len();
+        n += utils::calculate_payload_length(self.get_metadata(), self.get_data());
+        n
     }
 }
 
