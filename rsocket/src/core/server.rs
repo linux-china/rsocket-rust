@@ -52,8 +52,8 @@ where
         self
     }
 
-    pub fn on_start(mut self, hanlder: Box<dyn FnMut() + Send + Sync>) -> Self {
-        self.start_handler = Some(hanlder);
+    pub fn on_start(mut self, handler: Box<dyn FnMut() + Send + Sync>) -> Self {
+        self.start_handler = Some(handler);
         self
     }
 
