@@ -120,7 +120,7 @@ where
     C: Send + Sync + Connection + 'static,
 {
     pub async fn start(mut self) -> Result<Client> {
-        let tp: T = self.transport.take().expect("missint transport");
+        let tp: T = self.transport.take().expect("missing transport");
 
         let splitter = if self.mtu == 0 {
             None
@@ -157,7 +157,7 @@ where
                             }
                         }
                         if let Err(e) = sink.send(frame).await {
-                            error!("write frame failed: {}", e);
+                            error!("write frame failed: {:?}", e);
                             break;
                         }
                     }
@@ -167,7 +167,7 @@ where
                         let keepalive_frame =
                             frame::Keepalive::builder(0, Frame::FLAG_RESPOND).build();
                         if let Err(e) = sink.send(keepalive_frame).await {
-                            error!("write frame failed: {}", e);
+                            error!("write frame failed: {:?}", e);
                             break;
                         }
                     }
