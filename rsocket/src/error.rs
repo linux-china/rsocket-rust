@@ -1,4 +1,5 @@
 use std::fmt;
+use std::fmt::Display;
 use std::io;
 
 use thiserror::Error;
@@ -50,6 +51,12 @@ pub enum RSocketError {
     IO(#[from] io::Error),
     #[error(transparent)]
     Other(#[from] anyhow::Error),
+}
+
+impl Display for RSocketError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{:?}", self)
+    }
 }
 
 impl RSocketError {
