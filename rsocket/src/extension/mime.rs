@@ -92,7 +92,7 @@ macro_rules! mime {
 }
 
 mime!(APPLICATION_AVRO, 0x00, "application/avro");
-mime!(APPLICATION_CBOR, 0x01, "application/avro");
+mime!(APPLICATION_CBOR, 0x01, "application/cbor");
 mime!(APPLICATION_GRAPHQL, 0x02, "application/graphql");
 mime!(APPLICATION_GZIP, 0x03, "application/gzip");
 mime!(APPLICATION_JAVASCRIPT, 0x04, "application/javascript");
