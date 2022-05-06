@@ -145,6 +145,11 @@ mime!(
     "application/cloudevents+json"
 );
 mime!(
+    APPLICATION_X_FLATBUFFERS,
+    0x2A,
+    "application/x-flatbuffers"
+);
+mime!(
     MESSAGE_X_RSOCKET_MIME_TYPE_V0,
     0x7A,
     "message/x.rsocket.mime-type.v0"
