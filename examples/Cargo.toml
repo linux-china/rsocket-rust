@@ -9,7 +9,7 @@ publish = false
 log = "0.4"
 env_logger = "0.11"
 futures = "0.3"
-clap = "2.34"
+clap = "4.5"
 pprof = { version = "0.13", features = ["flamegraph"] }
 
 [dev-dependencies.rsocket_rust]
