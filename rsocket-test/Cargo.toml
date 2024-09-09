@@ -6,14 +6,14 @@ edition = "2021"
 publish = false
 
 [dev-dependencies]
-log = "0.4.14"
-futures = "0.3.15"
-env_logger = "0.8.3"
-bytes = "1.0.1"
-hex = "0.4.3"
-rand = "0.8.3"
-serde = "1.0.126"
-serde_derive = "1.0.126"
+log = "0.4"
+futures = "0.3"
+env_logger = "0.11"
+bytes = "1.7"
+hex = "0.4"
+rand = "0.8"
+serde = "1"
+serde_derive = "1"
 
 [dev-dependencies.rsocket_rust]
 path = "../rsocket"
@@ -33,22 +33,22 @@ path = "../rsocket-messaging"
 version = "0.7"
 
 [dev-dependencies.tokio]
-version = "1.0.3"
+version = "1.40"
 default-features = false
 features = ["full"]
 
 [dev-dependencies.tokio-stream]
-version = "0.1.7"
+version = "0.1"
 features = ["sync"]
 
 [dev-dependencies.anyhow]
-version = "1.0.40"
+version = "1"
 
 [dev-dependencies.async-trait]
-version = "0.1.50"
+version = "0.1"
 
 [dev-dependencies.serial_test]
-version = "0.5.1"
+version = "3.1"
 
 [dev-dependencies.async-stream]
-version = "0.3.1"
+version = "0.3"

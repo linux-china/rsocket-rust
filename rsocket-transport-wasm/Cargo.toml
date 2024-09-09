@@ -10,14 +10,14 @@ homepage = "https://github.com/rsocket/rsocket-rust"
 description = "WASM Websocket RSocket transport implementation."
 
 [dependencies]
-bytes = "1.0.1"
-wasm-bindgen-futures = "0.4.24"
-futures-channel = "0.3.15"
-futures-util = "0.3.15"
-js-sys = "0.3.51"
-serde = "1.0.126"
-serde_derive = "1.0.126"
-log = "0.4.14"
+bytes = "1.7"
+wasm-bindgen-futures = "0.4"
+futures-channel = "0.3"
+futures-util = "0.3"
+js-sys = "0.3"
+serde = "1.0"
+serde_derive = "1.0"
+log = "0.4"
 
 [dependencies.rsocket_rust]
 path = "../rsocket"
@@ -25,11 +25,11 @@ version = "0.7"
 features = ["frame"]
 
 [dependencies.wasm-bindgen]
-version = "0.2.74"
+version = "0.2"
 features = ["serde-serialize"]
 
 [dependencies.web-sys]
-version = "0.3.51"
+version = "0.3"
 features = [
   "FileReader",
   "ProgressEvent",

@@ -6,11 +6,11 @@ edition = "2021"
 publish = false
 
 [dev-dependencies]
-log = "0.4.14"
-env_logger = "0.8.3"
-futures = "0.3.15"
-clap = "2.33.3"
-pprof = { version = "0.4.3", features = ["flamegraph"] }
+log = "0.4"
+env_logger = "0.11"
+futures = "0.3"
+clap = "2.34"
+pprof = { version = "0.13", features = ["flamegraph"] }
 
 [dev-dependencies.rsocket_rust]
 version = "0.7"
@@ -23,7 +23,7 @@ features = ["tls"]
 version = "0.7"
 
 [dev-dependencies.tokio]
-version = "1.0.3"
+version = "1"
 default-features = false
 features = ["full"]
 
