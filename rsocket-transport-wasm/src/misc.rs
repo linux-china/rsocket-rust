@@ -3,6 +3,7 @@ use rsocket_rust::prelude::*;
 use rsocket_rust::Client;
 use wasm_bindgen::prelude::{wasm_bindgen, JsValue};
 use wasm_bindgen_futures::future_to_promise;
+use gloo_utils::format::JsValueSerdeExt;
 
 use super::client::WebsocketClientTransport;
 
@@ -19,7 +20,7 @@ pub struct JsClient {
 
 impl Into<JsValue> for &JsPayload {
     fn into(self) -> JsValue {
-        JsValue::from_serde(self).unwrap()
+        <JsValue as JsValueSerdeExt>::from_serde(self).unwrap()
     }
 }
 
@@ -71,7 +72,7 @@ pub async fn connect(url: String) -> Result<JsClient, JsValue> {
 impl JsClient {
     pub fn request_response(&self, request: &JsValue) -> Promise {
         let inner = self.inner.clone();
-        let request: JsPayload = request.into_serde().unwrap();
+        let request: JsPayload = JsValueSerdeExt::into_serde(request).unwrap();
         future_to_promise(async move {
             match inner.request_response(request.into()).await {
                 Ok(Some(v)) => {
@@ -86,7 +87,7 @@ impl JsClient {
 
     pub fn fire_and_forget(&self, request: &JsValue) -> Promise {
         let inner = self.inner.clone();
-        let request: JsPayload = request.into_serde().unwrap();
+        let request: JsPayload = JsValueSerdeExt::into_serde(request).unwrap();
 
         future_to_promise(async move {
             let _ = inner.fire_and_forget(request.into()).await;
